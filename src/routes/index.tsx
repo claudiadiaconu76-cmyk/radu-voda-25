@@ -284,9 +284,8 @@ function Index() {
             Imobil boutique · Sector 4 · 26 apartamente
           </span>
           <h1 className="mx-auto mt-5 max-w-2xl text-[2rem] font-semibold leading-[1.12] text-white md:text-5xl">
-            Un imobil boutique în centrul Bucureștiului.{" "}
-            <span className="text-primary">26 de unități.</span>{" "}
-            Locul tău.
+            Locuiește în inima Bucureștiului, într-un imobil de doar{" "}
+            <span className="text-primary">26 de unități</span>.
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/85 md:text-lg">
             Un proiect boutique cu doar 26 de apartamente premium, la câteva minute de Piața Unirii și de Centrul Vechi. Pentru cei care vor centrul, fără compromisuri.
