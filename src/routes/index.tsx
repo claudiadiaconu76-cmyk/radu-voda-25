@@ -789,7 +789,7 @@ function Index() {
         <div className="mx-auto max-w-6xl px-5">
           <SectionHead
             kicker="Finanțare"
-            title={<>Cum îți permiți un apartament în <Accent>centrul Bucureștiului</Accent>.</>}
+            title={<>O modalitate eficientă de a cumpăra în <Accent>centrul Bucureștiului</Accent>.</>}
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {[
