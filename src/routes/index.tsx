@@ -288,7 +288,7 @@ function Index() {
             <span className="text-primary">26 de unități</span>.
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/85 md:text-lg">
-            Un proiect boutique cu doar 26 de apartamente premium, la câteva minute de Piața Unirii și de Centrul Vechi. Pentru cei care vor centrul, fără compromisuri.
+            La Piața Unirii nu cumperi doar un apartament. Cumperi o locație care își păstrează valoarea în timp.
           </p>
 
           {/* Stats */}
@@ -308,7 +308,7 @@ function Index() {
 
           {/* Reducere badge */}
           <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-bold text-primary-foreground shadow-lg">
-            <Sparkles className="h-4 w-4" /> Prețuri speciale -5% la apartamente selectate
+            <Sparkles className="h-4 w-4" /> Disponibilități limitate într-un proiect boutique cu 26 de apartamente
           </div>
 
           {/* Formular hero */}
