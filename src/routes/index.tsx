@@ -443,9 +443,9 @@ function Index() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
-              { Icon: Layers,     t: "Pereți exteriori de 50 cm",       d: "Zidărie dublă, rar întâlnită la construcții noi. Înseamnă liniște totală în casă și facturi mici la energie." },
+              { Icon: Layers,     t: "Pereți exteriori de până la 60 cm", d: "Zidărie dublă, rar întâlnită la construcții noi. Înseamnă liniște totală în casă și facturi mici la energie." },
               { Icon: ShieldCheck,t: "Tâmplărie de aluminiu premium",   d: "Aluminiu de cea mai înaltă calitate, nu PVC. Nu se deformează, izolează fonic superior și rezistă zeci de ani." },
-              { Icon: Building2,  t: "Fațadă ventilată Porcelanosa",    d: "Plăci ceramice de la Porcelanosa: aspect impecabil și zeci de ani fără costuri de întreținere." },
+              { Icon: Building2,  t: "Fațadă ventilată Porcelanosa",    d: "Plăci ceramice de la Porcelanosa: aspect impecabil și costuri minime de întreținere pe termen lung." },
               { Icon: Zap,        t: "Eficiență energetică ridicată",   d: "Vara păstrezi răcoarea, iarna căldura, cu un consum minim de energie pe tot parcursul anului." },
               { Icon: Car,        t: "Parcare subterană",                d: "44 de locuri (40 subterane, 4 exterioare), cu stații de încărcare pentru mașini electrice." },
               { Icon: Sparkles,   t: "Branduri internaționale",         d: "Geberit, Rockwool, Knauf, Alumil, Legrand, Porcelanosa, Equitone, Ideal Standard și altele." },
