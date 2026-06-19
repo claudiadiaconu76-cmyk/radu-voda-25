@@ -48,6 +48,9 @@ const renderLivingLight    = { url: "/images/render-living-light.jpg" };
 const renderLivingDark     = { url: "/images/render-living-dark.jpg" };
 const renderKitchenLiving  = { url: "/images/render-kitchen-living.jpg" };
 const renderKitchenEvening = { url: "/images/render-kitchen-evening.jpg" };
+const renderEmptyKitchenLight = { url: "/images/render-empty-kitchen-light.jpg" };
+const renderEmptyKitchenDark  = { url: "/images/render-empty-kitchen-dark.jpg" };
+const renderEmptyBedroomDark  = { url: "/images/render-empty-bedroom-dark.jpg" };
 
 type Unit = {
   cod: string; etaj: number; cam: 2 | 3;
@@ -554,7 +557,7 @@ function Index() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             <ApartCard
-              img={renderLivingLight.url}
+              img={renderEmptyKitchenLight.url}
               alt="Apartament 2 camere (randare)"
               title="2 camere"
               sub="63–75 mp utili, balcon până la 14,5 mp"
@@ -567,7 +570,7 @@ function Index() {
               onDetails={() => setModal("2cam")}
             />
             <ApartCard
-              img={renderKitchenLiving.url}
+              img={renderEmptyKitchenDark.url}
               alt="Apartament 3 camere (randare)"
               title="3 camere"
               sub="82–110 mp utili, balcon sau terasă până la 44 mp"
@@ -580,7 +583,7 @@ function Index() {
               onDetails={() => setModal("3cam")}
             />
             <ApartCard
-              img={renderBedroomDark.url}
+              img={renderEmptyBedroomDark.url}
               alt="Apartament etaj 5 (randare)"
               title="Etaj 5 · terase generoase"
               sub="Ultimul etaj, terasă de până la 71 mp"
