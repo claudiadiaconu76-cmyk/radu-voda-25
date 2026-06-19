@@ -812,7 +812,7 @@ function Index() {
         <div className="mx-auto max-w-6xl px-5">
           <SectionHead
             kicker="Achiziție sigură"
-            title={<>Cumperi în siguranță, chiar dacă te <Accent>muți abia în 2027</Accent>.</>}
+            title={<>Un proiect în dezvoltare, cu etape clare și <Accent>termene asumate</Accent>.</>}
             sub="Achiziția off-plan la Radu Vodă 25 este structurată ca să-ți protejeze investiția în fiecare etapă."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
