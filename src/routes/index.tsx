@@ -116,18 +116,19 @@ function useCountdown(target: Date) {
       days:    Math.floor(diff / 86_400_000),
       hours:   Math.floor((diff % 86_400_000) / 3_600_000),
       minutes: Math.floor((diff % 3_600_000)  / 60_000),
+      seconds: Math.floor((diff % 60_000)     / 1_000),
     };
   };
   const [t, setT] = useState(calc);
   useEffect(() => {
-    const id = setInterval(() => setT(calc()), 30_000);
+    const id = setInterval(() => setT(calc()), 1_000);
     return () => clearInterval(id);
   }, []);
   return t;
 }
 
 function OfferBar() {
-  const { days, hours, minutes } = useCountdown(OFFER_DEADLINE);
+  const { days, hours, minutes, seconds } = useCountdown(OFFER_DEADLINE);
   return (
     <section className="border-y border-primary/20 bg-card py-10">
       <div className="mx-auto max-w-2xl px-5 text-center">
@@ -145,6 +146,7 @@ function OfferBar() {
             { v: days,    l: "zile" },
             { v: hours,   l: "ore" },
             { v: minutes, l: "minute" },
+            { v: seconds, l: "secunde" },
           ] as const).map(({ v, l }) => (
             <div key={l} className="flex min-w-[78px] flex-col items-center rounded-2xl border border-border bg-background px-5 py-4">
               <span className="text-3xl font-bold tabular-nums text-primary">
