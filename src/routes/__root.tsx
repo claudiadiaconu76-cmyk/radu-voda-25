@@ -77,18 +77,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "HomeStart Web creates luxury real estate agency landing pages from provided text content." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "HomeStart Web creates luxury real estate agency landing pages from provided text content." },
+      { title: "Radu Vodă 25 · Apartamente boutique lângă Piața Unirii" },
+      { name: "description", content: "26 de apartamente boutique în centrul Bucureștiului, la 650 m de Piața Unirii. Prețuri de la 236.513€ + TVA 19%. Finalizare 2027." },
+      { name: "author", content: "Radu Vodă 25" },
+      { property: "og:title", content: "Radu Vodă 25 · Apartamente boutique lângă Piața Unirii" },
+      { property: "og:description", content: "26 de apartamente boutique la 650 m de Piața Unirii. De la 236.513€ + TVA 19%. Finalizare 2027." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "HomeStart Web creates luxury real estate agency landing pages from provided text content." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4ece7268-cb79-4e82-a763-01b8c18662be/id-preview-b4d763b7--0bc23cc0-b334-4089-be5d-bf2a1277574b.lovable.app-1781426423516.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4ece7268-cb79-4e82-a763-01b8c18662be/id-preview-b4d763b7--0bc23cc0-b334-4089-be5d-bf2a1277574b.lovable.app-1781426423516.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Radu Vodă 25 · Apartamente boutique lângă Piața Unirii" },
+      { name: "twitter:description", content: "26 de apartamente boutique la 650 m de Piața Unirii. De la 236.513€ + TVA 19%. Finalizare 2027." },
+      { property: "og:image", content: "/images/IMG_3068.jpg" },
+      { name: "twitter:image", content: "/images/IMG_3068.jpg" },
     ],
     links: [
       {
@@ -105,7 +104,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="ro">
       <head>
         <HeadContent />
       </head>
