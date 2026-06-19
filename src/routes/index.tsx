@@ -8,8 +8,8 @@ import {
   Layers, Zap, TrendingUp, BedDouble, Eye,
 } from "lucide-react";
 
-const PHONE_DISPLAY = "+40 744 303 567";
-const PHONE_TEL = "+40744303567";
+const PHONE_DISPLAY = "+40 751 116 116";
+const PHONE_TEL = "+40751116116";
 const EMAIL = "bogdan@atmyhome.ro";
 const PROGRAM = "Luni–Vineri, 09:00–17:00";
 
@@ -262,7 +262,7 @@ function Index() {
       <header className="w-full border-b border-border/60 bg-background">
         <div className="mx-auto flex h-20 max-w-6xl items-center justify-center px-5">
           <a href="#top">
-            <img src={logo.url} alt="Radu Vodă 25" className="h-14 w-auto md:h-16" />
+            <img src={logo.url} alt="Radu Vodă 25" className="h-20 w-auto md:h-24" />
           </a>
         </div>
       </header>
@@ -308,7 +308,7 @@ function Index() {
 
           {/* Reducere badge */}
           <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-bold text-primary-foreground shadow-lg">
-            <Sparkles className="h-4 w-4" /> Prețuri speciale -5% la 2 apartamente selectate
+            <Sparkles className="h-4 w-4" /> Prețuri speciale -5% la apartamente selectate
           </div>
 
           {/* Formular hero */}
@@ -888,7 +888,7 @@ function Index() {
       {/* FOOTER */}
       <footer className="bg-[oklch(0.18_0.01_60)] py-10 text-center text-sm text-[oklch(0.7_0.01_80)]">
         <div className="mx-auto max-w-6xl px-5">
-          <img src={logo.url} alt="Radu Vodă 25" className="mx-auto h-14 w-auto opacity-90" />
+          <img src={logo.url} alt="Radu Vodă 25" className="mx-auto h-20 w-auto opacity-90" />
           <div className="mt-4">Str. Radu Vodă 25, Sector 4, București · Finalizare 2027</div>
           <div className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
             <a href={`tel:${PHONE_TEL}`} className="hover:text-white">{PHONE_DISPLAY}</a>
