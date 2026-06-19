@@ -161,7 +161,7 @@ const apartmentDetails = {
       { l: "Interval de preț", v: "262.413€ – 435.173€ + TVA 19%" },
       { l: "Vedere", v: "Panoramică, spații exterioare private" },
     ],
-    note: "Unitatea A23 are cea mai mare terasă din proiect — 71 mp de spațiu exterior privat.",
+    note: "Unitatea A23 are cea mai mare terasă din proiect: 71 mp de spațiu exterior privat.",
   },
 } as const;
 
@@ -170,7 +170,7 @@ type ModalKey = keyof typeof apartmentDetails;
 const FAQ = [
   {
     q: "Prețul include TVA? Cât plătesc final?",
-    a: "Prețurile afișate sunt fără TVA. Cota aplicabilă este 19% — prețul final cu TVA ți-l comunicăm pentru unitatea aleasă la primul contact.",
+    a: "Prețurile afișate sunt fără TVA. Cota aplicabilă este 19%. Prețul final cu TVA ți-l comunicăm pentru unitatea aleasă la primul contact.",
   },
   {
     q: "Pot cumpăra cu credit ipotecar?",
@@ -182,7 +182,7 @@ const FAQ = [
   },
   {
     q: "Ce protejează avansul meu?",
-    a: "Plățile sunt corelate cu stadiul real al construcției — nu plătești pentru ce nu s-a construit. Mecanismul exact de protecție a avansului se confirmă la semnarea antecontractului.",
+    a: "Plățile sunt corelate cu stadiul real al construcției. Nu plătești pentru ce nu s-a construit. Mecanismul exact de protecție a avansului se confirmă la semnarea antecontractului.",
   },
   {
     q: "Apartamentul se predă la cheie sau semifinisat?",
@@ -190,7 +190,7 @@ const FAQ = [
   },
   {
     q: "Locul de parcare e inclus sau separat?",
-    a: "Imobilul are 44 de locuri (40 subterane + 4 exterioare), cu stații de încărcare EV. Locul de parcare se achiziționează separat — contactează-ne pentru preț.",
+    a: "Imobilul are 44 de locuri (40 subterane + 4 exterioare), cu stații de încărcare EV. Locul de parcare se achiziționează separat. Contactează-ne pentru preț.",
   },
   {
     q: "Pot personaliza finisajele?",
@@ -402,7 +402,7 @@ function Index() {
               <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
                 {[
                   "Vrei să locuiești fix în centrul Bucureștiului, nu la 40 de minute de el.",
-                  "Pui preț pe exclusivitate — un imobil de doar 26 de familii, nu un bloc-furnicar.",
+                  "Pui preț pe exclusivitate: un imobil de doar 26 de unități, nu un bloc-furnicar.",
                   "Cauți și o investiție: centrul consolidat își ține valoarea în timp.",
                   "Vrei finisaje premium și branduri internaționale, nu varianta minimă.",
                 ].map((t) => (
@@ -421,7 +421,7 @@ function Index() {
                 {[
                   "Cauți cel mai mic preț pe metru pătrat din oraș.",
                   "Vrei un complex mare, cu sute de apartamente și facilități de ansamblu.",
-                  "Ai nevoie să te muți imediat — finalizarea e în 2027.",
+                  "Ai nevoie să te muți imediat. Finalizarea e în 2027.",
                   "Preferi o zonă nouă, în dezvoltare, în locul centrului istoric.",
                 ].map((t) => (
                   <li key={t} className="flex gap-2">
@@ -760,7 +760,7 @@ function Index() {
               { Icon: FileText,     t: "Autorizație de construire",        d: "Proiect cu documentația în regulă. Autorizația și stadiul construcției sunt disponibile la cerere." },
               { Icon: ShieldCheck,  t: "Avansul tău, protejat",            d: "Plățile sunt corelate cu stadiul real al construcției. Mecanismul de protecție se detaliază în antecontract." },
               { Icon: CalendarClock,t: "Clauză clară de finalizare",       d: "Termen de predare și penalități de întârziere stabilite în antecontractul notarial." },
-              { Icon: HardHat,      t: "Plătești corelat cu stadiul",      d: "Tranșele sunt legate de progresul real al construcției — nu plătești în avans pentru ce nu s-a făcut." },
+              { Icon: HardHat,      t: "Plătești corelat cu stadiul",      d: "Tranșele sunt legate de progresul real al construcției. Nu plătești în avans pentru ce nu s-a făcut." },
               { Icon: BadgeCheck,   t: "Recepție înainte de ultima plată", d: "Ultima tranșă se achită după recepția apartamentului." },
               { Icon: Wallet,       t: "Prețul de la prima discuție e final", d: "Prețul pe care îl auzi la prima întâlnire este prețul final. Fără costuri ascunse care apar după semnare." },
               { Icon: Eye,          t: "Vizitezi șantierul oricând",       d: "Poți intra pe șantier să vezi structura, compartimentările și instalațiile înainte să cumperi." },
