@@ -523,14 +523,10 @@ function Index() {
           </div>
           <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
             {[
-              { im: renderLivingLight,     alt: "Living cu canapea și balcon (randare)" },
-              { im: renderLivingDark,      alt: "Living cu parchet închis și TV (randare)" },
-              { im: renderKitchenLiving,   alt: "Open plan living + bucătărie (randare)" },
-              { im: renderKitchenEvening,  alt: "Bucătărie iluminat de seară (randare)" },
-              { im: renderBedroomLight,    alt: "Dormitor luminos cu balcon (randare)" },
-              { im: renderBedroomDark,     alt: "Dormitor cu parchet cald și balcon (randare)" },
-              { im: renderBathMarble,      alt: "Baie cu marmură și raft deschis (randare)" },
-              { im: renderBathShower,      alt: "Baie cu duș și finisaj bej (randare)" },
+              { im: renderLivingLight,    alt: "Living cu canapea și balcon (randare)" },
+              { im: renderKitchenEvening, alt: "Bucătărie cu iluminat de seară (randare)" },
+              { im: renderBedroomLight,   alt: "Dormitor cu balcon (randare)" },
+              { im: renderBathMarble,     alt: "Baie cu marmură și raft deschis (randare)" },
             ].map((item, i) => (
               <div key={i} className="overflow-hidden rounded-2xl">
                 <img
