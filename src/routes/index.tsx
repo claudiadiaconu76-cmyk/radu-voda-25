@@ -16,6 +16,9 @@ const PROGRAM = "Luni–Vineri, 09:00–17:00";
 const PLAN_PDF = (cod: string) =>
   `https://www.atmyhome.ro/assets/radu-voda/planuri/${cod}.pdf`;
 
+// ── Ofertă promoțională ─────────────────────────────────────────
+const OFFER_DEADLINE = new Date("2026-07-15T23:59:59");
+
 // Endpoint formular — lasă gol pentru demo, pune URL Formspree pentru producție
 const LEAD_ENDPOINT = "";
 
@@ -104,6 +107,56 @@ export const Route = createFileRoute("/")({
 
 function Accent({ children }: { children: ReactNode }) {
   return <span className="text-primary">{children}</span>;
+}
+
+function useCountdown(target: Date) {
+  const calc = () => {
+    const diff = Math.max(0, target.getTime() - Date.now());
+    return {
+      days:    Math.floor(diff / 86_400_000),
+      hours:   Math.floor((diff % 86_400_000) / 3_600_000),
+      minutes: Math.floor((diff % 3_600_000)  / 60_000),
+    };
+  };
+  const [t, setT] = useState(calc);
+  useEffect(() => {
+    const id = setInterval(() => setT(calc()), 30_000);
+    return () => clearInterval(id);
+  }, []);
+  return t;
+}
+
+function OfferBar() {
+  const { days, hours, minutes } = useCountdown(OFFER_DEADLINE);
+  return (
+    <section className="border-y border-primary/20 bg-card py-10">
+      <div className="mx-auto max-w-2xl px-5 text-center">
+        <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-5 py-2 text-xs font-semibold uppercase tracking-widest text-primary">
+          Reducere de până la 17.777 € la unitățile selectate
+        </span>
+        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+          Prețurile promoționale actuale sunt disponibile pentru o perioadă limitată.
+        </p>
+        <p className="mt-7 text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
+          Oferta actuală expiră în
+        </p>
+        <div className="mt-3 flex justify-center gap-3">
+          {([
+            { v: days,    l: "zile" },
+            { v: hours,   l: "ore" },
+            { v: minutes, l: "minute" },
+          ] as const).map(({ v, l }) => (
+            <div key={l} className="flex min-w-[78px] flex-col items-center rounded-2xl border border-border bg-background px-5 py-4">
+              <span className="text-3xl font-bold tabular-nums text-primary">
+                {String(v).padStart(2, "0")}
+              </span>
+              <span className="mt-1 text-[10px] uppercase tracking-widest text-muted-foreground">{l}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function SectionHead({ kicker, title, sub }: { kicker: string; title: ReactNode; sub?: string }) {
@@ -328,6 +381,9 @@ function Index() {
         </div>
       </section>
 
+      {/* OFERTĂ */}
+      <OfferBar />
+
       {/* BRANDURI */}
       <section className="py-12 overflow-hidden">
         <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-8">
@@ -493,10 +549,11 @@ function Index() {
               alt="Apartament 2 camere (randare)"
               title="2 camere"
               sub="63–75 mp utili, balcon până la 14,5 mp"
-              price="de la 236.513€"
-              priceReduced="de la 224.686€"
+              price="236.512 €"
+              priceReduced="224.686 €"
+              savings="11.826 €"
               suffix="+ TVA 19%"
-              extra="Preț special -5% pe unitatea A2"
+              extra="Unitatea A2 · ofertă perioadă limitată"
               tag={null}
               onDetails={() => setModal("2cam")}
             />
@@ -505,10 +562,11 @@ function Index() {
               alt="Apartament 3 camere (randare)"
               title="3 camere"
               sub="82–110 mp utili, balcon sau terasă până la 44 mp"
-              price="de la 291.760€"
-              priceReduced="de la 337.769€ (A3)"
+              price="355.547 €"
+              priceReduced="337.770 €"
+              savings="17.777 €"
               suffix="+ TVA 19%"
-              extra="Preț special -5% pe unitatea A3"
+              extra="Unitatea A3 · ofertă perioadă limitată"
               tag="Cel mai solicitat"
               onDetails={() => setModal("3cam")}
             />
@@ -1043,10 +1101,10 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
 }
 
 function ApartCard({
-  img, alt, title, sub, price, priceReduced, suffix, extra, tag, onDetails,
+  img, alt, title, sub, price, priceReduced, savings, suffix, extra, tag, onDetails,
 }: {
   img: string; alt: string; title: string; sub: string;
-  price: string; priceReduced?: string; suffix: string;
+  price: string; priceReduced?: string; savings?: string; suffix: string;
   extra: string; tag: string | null; onDetails: () => void;
 }) {
   return (
@@ -1078,13 +1136,18 @@ function ApartCard({
               <div className="text-2xl font-bold text-primary">
                 {priceReduced} <span className="text-sm font-normal text-muted-foreground">{suffix}</span>
               </div>
+              {savings && (
+                <div className="mt-2 inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                  Economie {savings}
+                </div>
+              )}
             </div>
           ) : (
             <div className="text-2xl font-bold text-primary">
               {price} <span className="text-sm font-normal text-muted-foreground">{suffix}</span>
             </div>
           )}
-          <div className="text-xs text-muted-foreground">{extra}</div>
+          <div className="mt-2 text-xs text-muted-foreground">{extra}</div>
         </div>
         <div className="mt-auto flex items-center justify-center gap-4 pt-5">
           <button onClick={onDetails} className="text-sm font-semibold text-primary hover:underline">
