@@ -39,12 +39,15 @@ const extDay      = { url: "/images/IMG_3069.jpg" };
 const extLife     = { url: "/images/IMG_3070.jpg" };
 const extDay2     = { url: "/images/IMG_3072.jpg" };
 const extNight2   = { url: "/images/IMG_3073.jpg" };
-const intBathLux  = { url: "/images/IMG_3057.jpg" };
-const intBathBlack = { url: "/images/IMG_3058.jpg" };
-const intBathWarm = { url: "/images/IMG_3059.jpg" };
-const intShower   = { url: "/images/IMG_3062.jpg" };
-const darkLiving  = { url: "/images/IMG_3064.jpg" };
-const darkKitchen = { url: "/images/IMG_3065.jpg" };
+const renderBathMarble     = { url: "/images/render-bath-marble.jpg" };
+const renderBathShower     = { url: "/images/render-bath-shower.jpg" };
+const renderBathBeige      = { url: "/images/render-bath-beige.jpg" };
+const renderBedroomLight   = { url: "/images/render-bedroom-light.jpg" };
+const renderBedroomDark    = { url: "/images/render-bedroom-dark.jpg" };
+const renderLivingLight    = { url: "/images/render-living-light.jpg" };
+const renderLivingDark     = { url: "/images/render-living-dark.jpg" };
+const renderKitchenLiving  = { url: "/images/render-kitchen-living.jpg" };
+const renderKitchenEvening = { url: "/images/render-kitchen-evening.jpg" };
 
 type Unit = {
   cod: string; etaj: number; cam: 2 | 3;
@@ -517,10 +520,14 @@ function Index() {
           </div>
           <div className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-4">
             {[
-              { im: intBathWarm,  alt: "Baie cu marmură albă (randare)" },
-              { im: darkKitchen,  alt: "Bucătărie cu finisaj premium (randare)" },
-              { im: intBathBlack, alt: "Baie cu armături negre (randare)" },
-              { im: intShower,    alt: "Duș cu iluminat indirect (randare)" },
+              { im: renderLivingLight,     alt: "Living cu canapea și balcon (randare)" },
+              { im: renderLivingDark,      alt: "Living cu parchet închis și TV (randare)" },
+              { im: renderKitchenLiving,   alt: "Open plan living + bucătărie (randare)" },
+              { im: renderKitchenEvening,  alt: "Bucătărie iluminat de seară (randare)" },
+              { im: renderBedroomLight,    alt: "Dormitor luminos cu balcon (randare)" },
+              { im: renderBedroomDark,     alt: "Dormitor cu parchet cald și balcon (randare)" },
+              { im: renderBathMarble,      alt: "Baie cu marmură și raft deschis (randare)" },
+              { im: renderBathShower,      alt: "Baie cu duș și finisaj bej (randare)" },
             ].map((item, i) => (
               <div key={i} className="overflow-hidden rounded-2xl">
                 <img
@@ -547,7 +554,7 @@ function Index() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             <ApartCard
-              img={darkLiving.url}
+              img={renderLivingLight.url}
               alt="Apartament 2 camere (randare)"
               title="2 camere"
               sub="63–75 mp utili, balcon până la 14,5 mp"
@@ -560,7 +567,7 @@ function Index() {
               onDetails={() => setModal("2cam")}
             />
             <ApartCard
-              img={darkKitchen.url}
+              img={renderKitchenLiving.url}
               alt="Apartament 3 camere (randare)"
               title="3 camere"
               sub="82–110 mp utili, balcon sau terasă până la 44 mp"
@@ -573,7 +580,7 @@ function Index() {
               onDetails={() => setModal("3cam")}
             />
             <ApartCard
-              img={intBathLux.url}
+              img={renderBedroomDark.url}
               alt="Apartament etaj 5 (randare)"
               title="Etaj 5 · terase generoase"
               sub="Ultimul etaj, terasă de până la 71 mp"
