@@ -323,7 +323,7 @@ function Index() {
             <Phone className="h-4 w-4 text-primary" /> Sună acum: {PHONE_DISPLAY}
           </a>
           <p className="mt-4 text-[12px] text-white/65">
-            Autorizație de construire · Răspuns în maxim 24h
+            Răspuns în maxim 24h
           </p>
         </div>
       </section>
