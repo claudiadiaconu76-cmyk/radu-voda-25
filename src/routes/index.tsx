@@ -11,7 +11,7 @@ import {
 const PHONE_DISPLAY = "+40 751 116 116";
 const PHONE_TEL = "+40751116116";
 const EMAIL = "bogdan@atmyhome.ro";
-const PROGRAM = "Luni–Vineri, 09:00–17:00";
+const PROGRAM = "Luni-Vineri, 09:00-17:00";
 
 const PLAN_PDF = (cod: string) =>
   `https://www.atmyhome.ro/assets/radu-voda/planuri/${cod}.pdf`;
@@ -182,14 +182,14 @@ function SectionHead({ kicker, title, sub }: { kicker: string; title: ReactNode;
 const apartmentDetails = {
   "2cam": {
     title: "Apartament 2 camere",
-    subtitle: "63–75 mp utili, balcon până la 14,5 mp",
+    subtitle: "63-75 mp utili, balcon până la 14,5 mp",
     price: "de la 236.513€",
     suffix: "+ TVA 19%",
     rows: [
-      { l: "Suprafață utilă", v: "63–75 mp" },
+      { l: "Suprafață utilă", v: "63-75 mp" },
       { l: "Balcon", v: "până la 14,57 mp" },
       { l: "Compartimentare", v: "Hol, living, bucătărie, dormitor, baie" },
-      { l: "Etaje disponibile", v: "1–5" },
+      { l: "Etaje disponibile", v: "1-5" },
       { l: "Preț", v: "de la 236.513€ + TVA 19%" },
       { l: "Plan de plată", v: "5% rezervare + 25% în 30 zile, restul etapizat" },
     ],
@@ -197,14 +197,14 @@ const apartmentDetails = {
   },
   "3cam": {
     title: "Apartament 3 camere",
-    subtitle: "82–110 mp utili, balcon sau terasă până la 44 mp",
+    subtitle: "82-110 mp utili, balcon sau terasă până la 44 mp",
     price: "de la 291.760€",
     suffix: "+ TVA 19%",
     rows: [
-      { l: "Suprafață utilă", v: "82–110 mp" },
+      { l: "Suprafață utilă", v: "82-110 mp" },
       { l: "Balcon sau terasă", v: "până la 44,30 mp (etaj 3)" },
       { l: "Compartimentare", v: "Hol, living, bucătărie, 2 dormitoare, 2 băi" },
-      { l: "Etaje disponibile", v: "1–5" },
+      { l: "Etaje disponibile", v: "1-5" },
       { l: "Preț", v: "de la 291.760€ + TVA 19%" },
       { l: "Plan de plată", v: "5% rezervare + 25% în 30 zile, restul etapizat" },
     ],
@@ -218,8 +218,8 @@ const apartmentDetails = {
     rows: [
       { l: "Unități la etaj 5", v: "4 apartamente" },
       { l: "Terasă maximă", v: "71,27 mp (unitatea A23)" },
-      { l: "Suprafață utilă", v: "67–89 mp" },
-      { l: "Interval de preț", v: "262.413€ – 435.173€ + TVA 19%" },
+      { l: "Suprafață utilă", v: "67-89 mp" },
+      { l: "Interval de preț", v: "262.413€ - 435.173€ + TVA 19%" },
       { l: "Vedere", v: "Panoramică, spații exterioare private" },
     ],
     note: "Unitatea A23 are cea mai mare terasă din proiect: 71 mp de spațiu exterior privat.",
@@ -549,7 +549,7 @@ function Index() {
           <SectionHead
             kicker="Potențial investițional"
             title={<>Ce poate produce proprietatea <Accent>după ce o primești?</Accent></>}
-            sub="Poziționarea centrală face ca proprietățile din zonă să fie căutate atât pentru locuire, cât și pentru închiriere — pe termen lung sau scurt, în funcție de strategia aleasă."
+            sub="Poziționarea centrală face ca proprietățile din zonă să fie căutate atât pentru locuire, cât și pentru închiriere pe termen lung sau scurt, în funcție de strategia aleasă."
           />
           <div className="mt-10 grid gap-5 sm:grid-cols-3">
             {[
@@ -580,10 +580,10 @@ function Index() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             <ApartCard
-              img={renderEmptyKitchenLight.url}
+              img={renderLivingDark.url}
               alt="Apartament 2 camere (randare)"
               title="2 camere"
-              sub="63–75 mp utili, balcon până la 14,5 mp"
+              sub="63-75 mp utili, balcon până la 14,5 mp"
               price="236.512 €"
               priceReduced="224.686 €"
               savings="11.826 €"
@@ -593,10 +593,10 @@ function Index() {
               onDetails={() => setModal("2cam")}
             />
             <ApartCard
-              img={renderEmptyKitchenDark.url}
+              img={renderKitchenLiving.url}
               alt="Apartament 3 camere (randare)"
               title="3 camere"
-              sub="82–110 mp utili, balcon sau terasă până la 44 mp"
+              sub="82-110 mp utili, balcon sau terasă până la 44 mp"
               price="355.547 €"
               priceReduced="337.770 €"
               savings="17.777 €"
@@ -606,7 +606,7 @@ function Index() {
               onDetails={() => setModal("3cam")}
             />
             <ApartCard
-              img={renderEmptyBedroomDark.url}
+              img={renderBedroomDark.url}
               alt="Apartament etaj 5 (randare)"
               title="Etaj 5 · terase generoase"
               sub="Ultimul etaj, terasă de până la 71 mp"
@@ -719,7 +719,7 @@ function Index() {
             {[
               { c: "SC1", t: "Retail · vitrină stradală", rows: [["Nivel", "Parter"], ["Suprafață", "259,67 mp"], ["Terasă", "92,71 mp"], ["Înălțime", "6,02 m"]] },
               { c: "SC2", t: "Showroom",                  rows: [["Nivel", "Parter"], ["Suprafață", "70,04 mp"],  ["Terasă", "28,45 mp"], ["Înălțime", "6,02 m"]] },
-              { c: "SC3", t: "Retail mezanin",            rows: [["Nivel", "Mezanin"],["Suprafață", "201,41 mp"], ["Terasă", "—"],         ["Înălțime", "2,52 m"]] },
+              { c: "SC3", t: "Retail mezanin",            rows: [["Nivel", "Mezanin"],["Suprafață", "201,41 mp"], ["Terasă", "nu"],         ["Înălțime", "2,52 m"]] },
             ].map((s) => (
               <div key={s.c} className="rounded-3xl border border-border bg-background p-7 text-center">
                 <div className="flex items-center justify-center gap-2">
