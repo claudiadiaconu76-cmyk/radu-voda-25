@@ -549,23 +549,48 @@ function Index() {
           <SectionHead
             kicker="Potențial investițional"
             title={<>Ce poate produce proprietatea <Accent>după ce o primești?</Accent></>}
-            sub="Poziționarea centrală face ca proprietățile din zonă să fie căutate atât pentru locuire, cât și pentru închiriere pe termen lung sau scurt, în funcție de strategia aleasă."
+            sub="Localizarea centrală face ca unitățile din proiect să fie căutate atât pentru locuire, cât și pentru închiriere. Estimările de mai jos sunt calculate pe baza prețurilor de listă și a chiriilor de piață."
           />
-          <div className="mt-10 grid gap-5 sm:grid-cols-3">
-            {[
-              { val: "2.200 €",   unit: "/lună", label: "Chirie estimată" },
-              { val: "până la 16%", unit: "",   label: "Randament brut estimat" },
-              { val: "650 m",     unit: "",      label: "față de Piața Unirii" },
-            ].map((s) => (
-              <div key={s.label} className="rounded-3xl border border-primary/30 bg-accent/30 p-8 text-center">
-                <div className="text-4xl font-bold text-primary">{s.val}</div>
-                {s.unit && <div className="text-sm font-medium text-primary">{s.unit}</div>}
-                <div className="mt-2 text-sm text-muted-foreground">{s.label}</div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <div className="rounded-3xl border border-border bg-card p-8">
+              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Termen lung (chirie clasică)</div>
+              <div className="mt-5">
+                <div className="text-4xl font-bold text-primary">5-9%</div>
+                <div className="mt-1 text-sm text-muted-foreground">randament brut estimat</div>
               </div>
-            ))}
+              <div className="mt-5 space-y-2 border-t border-border pt-5">
+                <div className="text-xs uppercase tracking-wider text-muted-foreground">Chirie lunară estimată</div>
+                <div className="flex items-baseline justify-between">
+                  <span className="text-sm text-muted-foreground">2 camere</span>
+                  <span className="font-semibold">1.000-1.200 €/lună</span>
+                </div>
+                <div className="flex items-baseline justify-between">
+                  <span className="text-sm text-muted-foreground">3 camere</span>
+                  <span className="font-semibold">1.500-2.200 €/lună</span>
+                </div>
+              </div>
+            </div>
+            <div className="rounded-3xl border border-primary/30 bg-accent/30 p-8">
+              <div className="text-xs font-semibold uppercase tracking-widest text-primary">Termen scurt (Airbnb / Booking)</div>
+              <div className="mt-5">
+                <div className="text-4xl font-bold text-primary">9-16%</div>
+                <div className="mt-1 text-sm text-muted-foreground">randament brut estimat</div>
+              </div>
+              <div className="mt-5 space-y-2 border-t border-border pt-5">
+                <div className="text-xs uppercase tracking-wider text-muted-foreground">Tarif estimat per noapte</div>
+                <div className="flex items-baseline justify-between">
+                  <span className="text-sm text-muted-foreground">2 camere</span>
+                  <span className="font-semibold">110-130 €/noapte</span>
+                </div>
+                <div className="flex items-baseline justify-between">
+                  <span className="text-sm text-muted-foreground">3 camere</span>
+                  <span className="font-semibold">150-200 €/noapte</span>
+                </div>
+              </div>
+            </div>
           </div>
           <p className="mt-5 text-center text-xs text-muted-foreground">
-            Estimările pot varia în funcție de gradul de ocupare, mobilare și condițiile pieței. Nu constituie garanție de randament.
+            Estimări pentru apartamente complet mobilate și utilate, fără TVA. Randamentul în regim Airbnb presupune o rată de ocupare de 65% pe an. Cifrele variază în funcție de unitate, mobilare, ocupare reală și costuri operaționale.
           </p>
         </div>
       </section>
