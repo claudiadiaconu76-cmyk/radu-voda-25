@@ -543,6 +543,33 @@ function Index() {
         </div>
       </section>
 
+      {/* POTENȚIAL INVESTIȚIONAL */}
+      <section className="py-12 md:py-20">
+        <div className="mx-auto max-w-5xl px-5">
+          <SectionHead
+            kicker="Potențial investițional"
+            title={<>Ce poate produce proprietatea <Accent>după ce o primești?</Accent></>}
+            sub="Poziționarea centrală face ca proprietățile din zonă să fie căutate atât pentru locuire, cât și pentru închiriere — pe termen lung sau scurt, în funcție de strategia aleasă."
+          />
+          <div className="mt-10 grid gap-5 sm:grid-cols-3">
+            {[
+              { val: "2.200 €",   unit: "/lună", label: "Chirie estimată" },
+              { val: "până la 16%", unit: "",   label: "Randament brut estimat" },
+              { val: "650 m",     unit: "",      label: "față de Piața Unirii" },
+            ].map((s) => (
+              <div key={s.label} className="rounded-3xl border border-primary/30 bg-accent/30 p-8 text-center">
+                <div className="text-4xl font-bold text-primary">{s.val}</div>
+                {s.unit && <div className="text-sm font-medium text-primary">{s.unit}</div>}
+                <div className="mt-2 text-sm text-muted-foreground">{s.label}</div>
+              </div>
+            ))}
+          </div>
+          <p className="mt-5 text-center text-xs text-muted-foreground">
+            Estimările pot varia în funcție de gradul de ocupare, mobilare și condițiile pieței. Nu constituie garanție de randament.
+          </p>
+        </div>
+      </section>
+
       {/* APARTAMENTE */}
       <section id="apartamente" className="bg-card py-12 md:py-20">
         <div className="mx-auto max-w-6xl px-5">
