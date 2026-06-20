@@ -995,6 +995,9 @@ function Index() {
           <div className="mt-5 text-xs opacity-70">
             Prețurile afișate sunt fără TVA 19%. Imaginile sunt randări cu titlu de prezentare.
           </div>
+          <div className="mt-2 text-xs opacity-50">
+            TIMEA TRADE INVESTMENT SRL
+          </div>
         </div>
       </footer>
 
