@@ -417,12 +417,7 @@ function Index() {
                 ))}
               </div>
 
-              {/* Reducere badge */}
-              <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-bold text-primary-foreground shadow-lg">
-                <Sparkles className="h-4 w-4" /> Disponibilități limitate
-              </div>
-
-              <div className="mt-5 flex flex-col items-center gap-3 md:flex-row md:items-center">
+              <div className="mt-7 flex flex-col items-center gap-3 md:flex-row md:items-center">
                 <a
                   href={`tel:${PHONE_TEL}`}
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-bold text-neutral-900 shadow-lg hover:bg-white/90 transition-colors"
