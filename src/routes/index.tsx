@@ -13,6 +13,10 @@ const PHONE_TEL = "+40751116116";
 const EMAIL = "bogdan@atmyhome.ro";
 const PROGRAM = "Luni-Vineri, 09:00-17:00";
 
+// Domeniul final al proiectului — folosit la canonical, og:image absolut, sitemap, JSON-LD
+// [DE CONFIRMAT] înlocuiește cu domeniul real când e stabilit
+const SITE_URL = "https://raduvoda25.ro";
+
 const PLAN_PDF = (cod: string) =>
   `https://www.atmyhome.ro/assets/radu-voda/planuri/${cod}.pdf`;
 
@@ -39,18 +43,18 @@ const extDay      = { url: "/images/IMG_3069.jpg" };
 const extLife     = { url: "/images/IMG_3070.jpg" };
 const extDay2     = { url: "/images/IMG_3072.jpg" };
 const extNight2   = { url: "/images/IMG_3073.jpg" };
-const renderBathMarble     = { url: "/images/render-bath-marble.jpg" };
-const renderBathShower     = { url: "/images/render-bath-shower.jpg" };
-const renderBathBeige      = { url: "/images/render-bath-beige.jpg" };
-const renderBedroomLight   = { url: "/images/render-bedroom-light.jpg" };
-const renderBedroomDark    = { url: "/images/render-bedroom-dark.jpg" };
-const renderLivingLight    = { url: "/images/render-living-light.jpg" };
-const renderLivingDark     = { url: "/images/render-living-dark.jpg" };
-const renderKitchenLiving  = { url: "/images/render-kitchen-living.jpg" };
-const renderKitchenEvening = { url: "/images/render-kitchen-evening.jpg" };
-const renderEmptyKitchenLight = { url: "/images/render-empty-kitchen-light.jpg" };
-const renderEmptyKitchenDark  = { url: "/images/render-empty-kitchen-dark.jpg" };
-const renderEmptyBedroomDark  = { url: "/images/render-empty-bedroom-dark.jpg" };
+const renderBathMarble     = { url: "/images/render-bath-marble.webp" };
+const renderBathShower     = { url: "/images/render-bath-shower.webp" };
+const renderBathBeige      = { url: "/images/render-bath-beige.webp" };
+const renderBedroomLight   = { url: "/images/render-bedroom-light.webp" };
+const renderBedroomDark    = { url: "/images/render-bedroom-dark.webp" };
+const renderLivingLight    = { url: "/images/render-living-light.webp" };
+const renderLivingDark     = { url: "/images/render-living-dark.webp" };
+const renderKitchenLiving  = { url: "/images/render-kitchen-living.webp" };
+const renderKitchenEvening = { url: "/images/render-kitchen-evening.webp" };
+const renderEmptyKitchenLight = { url: "/images/render-empty-kitchen-light.webp" };
+const renderEmptyKitchenDark  = { url: "/images/render-empty-kitchen-dark.webp" };
+const renderEmptyBedroomDark  = { url: "/images/render-empty-bedroom-dark.webp" };
 
 type Unit = {
   cod: string; etaj: number; cam: 2 | 3;
@@ -93,19 +97,55 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Radu Vodă 25 · Apartamente boutique lângă Piața Unirii" },
-      { name: "description", content: "26 de apartamente boutique în centrul Bucureștiului, la 650 m de Piața Unirii. Prețuri de la 236.513€ + TVA 19%. Finalizare 2027." },
+      { name: "description", content: "26 de apartamente boutique în centrul Bucureștiului, la 650 m de Piața Unirii. Prețuri de la 236.513€ + TVA 21%. Finalizare 2027." },
       { name: "author", content: "Radu Vodă 25" },
+      { name: "robots", content: "index,follow" },
       { property: "og:title", content: "Radu Vodă 25 · Apartamente boutique lângă Piața Unirii" },
-      { property: "og:description", content: "26 de apartamente boutique la 650 m de Piața Unirii. De la 236.513€ + TVA 19%. Finalizare 2027." },
-      { property: "og:image", content: "/images/IMG_3068.jpg" },
+      { property: "og:description", content: "26 de apartamente boutique la 650 m de Piața Unirii. De la 236.513€ + TVA 21%. Finalizare 2027." },
+      { property: "og:image", content: `${SITE_URL}/images/IMG_3068.jpg` },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Radu Vodă 25 · Apartamente boutique lângă Piața Unirii" },
-      { name: "twitter:description", content: "26 de apartamente boutique la 650 m de Piața Unirii. De la 236.513€ + TVA 19%. Finalizare 2027." },
-      { name: "twitter:image", content: "/images/IMG_3068.jpg" },
+      { name: "twitter:description", content: "26 de apartamente boutique la 650 m de Piața Unirii. De la 236.513€ + TVA 21%. Finalizare 2027." },
+      { name: "twitter:image", content: `${SITE_URL}/images/IMG_3068.jpg` },
     ],
     links: [
       { rel: "icon", href: "/images/logo.png" },
+      { rel: "canonical", href: SITE_URL },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Radu Vodă 25",
+          url: SITE_URL,
+          logo: `${SITE_URL}/images/logo.png`,
+          telephone: PHONE_TEL,
+          email: EMAIL,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Str. Radu Vodă 25",
+            addressLocality: "București",
+            addressRegion: "Sector 4",
+            addressCountry: "RO",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
     ],
   }),
   component: Index,
@@ -134,16 +174,21 @@ function useCountdown(target: Date) {
 }
 
 function OfferBar() {
+  // Randare doar pe client: elimină pâlpâitul / eroarea de hydration (R05)
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   const { days, hours, minutes, seconds } = useCountdown(OFFER_DEADLINE);
+
+  if (!mounted) return null;
+  // La expirare, ascunde complet blocul de cronometru (R05)
+  if (Date.now() >= OFFER_DEADLINE.getTime()) return null;
+
   return (
     <section className="border-y border-primary/20 bg-card py-10">
       <div className="mx-auto max-w-2xl px-5 text-center">
         <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-5 py-2 text-xs font-semibold uppercase tracking-widest text-primary">
           Reducere de până la 17.777 € la unitățile selectate
         </span>
-        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-          Prețurile promoționale actuale sunt disponibile pentru o perioadă limitată.
-        </p>
         <p className="mt-7 text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
           Oferta actuală expiră în
         </p>
@@ -184,13 +229,13 @@ const apartmentDetails = {
     title: "Apartament 2 camere",
     subtitle: "63-75 mp utili, balcon până la 14,5 mp",
     price: "de la 236.513€",
-    suffix: "+ TVA 19%",
+    suffix: "+ TVA 21%",
     rows: [
       { l: "Suprafață utilă", v: "63-75 mp" },
       { l: "Balcon", v: "până la 14,57 mp" },
       { l: "Compartimentare", v: "Hol, living, bucătărie, dormitor, baie" },
       { l: "Etaje disponibile", v: "1-5" },
-      { l: "Preț", v: "de la 236.513€ + TVA 19%" },
+      { l: "Preț", v: "de la 236.513€ + TVA 21%" },
       { l: "Plan de plată", v: "5% rezervare + 25% în 30 zile, restul etapizat" },
     ],
     note: "Ideal pentru cupluri sau pentru o investiție cu randament în centrul Bucureștiului.",
@@ -199,13 +244,13 @@ const apartmentDetails = {
     title: "Apartament 3 camere",
     subtitle: "82-110 mp utili, balcon sau terasă până la 44 mp",
     price: "de la 291.760€",
-    suffix: "+ TVA 19%",
+    suffix: "+ TVA 21%",
     rows: [
       { l: "Suprafață utilă", v: "82-110 mp" },
       { l: "Balcon sau terasă", v: "până la 44,30 mp (etaj 3)" },
       { l: "Compartimentare", v: "Hol, living, bucătărie, 2 dormitoare, 2 băi" },
       { l: "Etaje disponibile", v: "1-5" },
-      { l: "Preț", v: "de la 291.760€ + TVA 19%" },
+      { l: "Preț", v: "de la 291.760€ + TVA 21%" },
       { l: "Plan de plată", v: "5% rezervare + 25% în 30 zile, restul etapizat" },
     ],
     note: "Cel mai solicitat tip de unitate. Potrivit pentru familii care vor centrul fără compromisuri.",
@@ -214,12 +259,12 @@ const apartmentDetails = {
     title: "Apartamente etaj 5 · terase generoase",
     subtitle: "Ultimul etaj, terasă de până la 71 mp, vedere panoramică",
     price: "de la 262.413€",
-    suffix: "+ TVA 19%",
+    suffix: "+ TVA 21%",
     rows: [
       { l: "Unități la etaj 5", v: "4 apartamente" },
       { l: "Terasă maximă", v: "71,27 mp (unitatea A23)" },
       { l: "Suprafață utilă", v: "67-89 mp" },
-      { l: "Interval de preț", v: "262.413€ - 435.173€ + TVA 19%" },
+      { l: "Interval de preț", v: "262.413€ - 435.173€ + TVA 21%" },
       { l: "Vedere", v: "Panoramică, spații exterioare private" },
     ],
     note: "Unitatea A23 are cea mai mare terasă din proiect: 71 mp de spațiu exterior privat.",
@@ -231,7 +276,7 @@ type ModalKey = keyof typeof apartmentDetails;
 const FAQ = [
   {
     q: "Prețul include TVA? Cât plătesc final?",
-    a: "Prețurile afișate sunt fără TVA. Cota aplicabilă este 19%. Prețul final cu TVA ți-l comunicăm pentru unitatea aleasă la primul contact.",
+    a: "Prețurile afișate sunt fără TVA. Cota aplicabilă este 21%. Prețul final cu TVA ți-l comunicăm pentru unitatea aleasă la primul contact.",
   },
   {
     q: "Pot cumpăra cu credit ipotecar?",
@@ -281,6 +326,7 @@ const FAQ = [
 
 function Index() {
   const [modal, setModal] = useState<ModalKey | null>(null);
+  const [pdfModal, setPdfModal] = useState<{ url: string; cod: string } | null>(null);
   const [faqOpen, setFaqOpen] = useState<number | null>(0);
   const [barHidden, setBarHidden] = useState(false);
   const [fCam, setFCam] = useState<0 | 2 | 3>(0);
@@ -319,27 +365,20 @@ function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground antialiased pb-16 md:pb-0">
 
-      {/* HEADER */}
-      <header className="w-full border-b border-border/60 bg-background">
-        <div className="mx-auto flex h-20 max-w-6xl items-center justify-center px-5">
-          <a href="#top">
-            <img src={logo.url} alt="Radu Vodă 25" className="h-20 w-auto md:h-24" />
-          </a>
-        </div>
-      </header>
-
       {/* HERO */}
       <section id="top" className="relative overflow-hidden">
         <img
-          src={hero.url}
+          src="/images/hero-1920.webp"
+          srcSet="/images/hero-960.webp 960w, /images/hero-1920.webp 1920w"
+          sizes="100vw"
+          width={1920}
+          height={1601}
+          fetchPriority="high"
           alt="Fațada Radu Vodă 25, București"
           className="absolute inset-0 h-full w-full object-cover"
           style={{ objectPosition: "center 40%" }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/85" />
-        <span className="absolute left-4 top-4 z-10 rounded bg-black/40 px-2.5 py-1 text-[11px] text-white/75">
-          Randare cu titlu de prezentare
-        </span>
         <div className="relative mx-auto max-w-3xl px-5 py-14 text-center md:py-20">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white">
             Imobil boutique · Sector 4 · 26 apartamente
@@ -355,7 +394,7 @@ function Index() {
           {/* Stats */}
           <div className="mx-auto mt-7 grid max-w-xl grid-cols-2 gap-3 md:grid-cols-4">
             {[
-              { n: "236.513€", l: "preț de la (+ TVA 19%)" },
+              { n: "236.513€", l: "preț de la (+ TVA 21%)" },
               { n: "650 m",    l: "până la Piața Unirii" },
               { n: "26",       l: "apartamente" },
               { n: "2027",     l: "finalizare" },
@@ -507,7 +546,7 @@ function Index() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
-              { Icon: Layers,     t: "Pereți exteriori de până la 60 cm", d: "Zidărie dublă, rar întâlnită la construcții noi. Înseamnă liniște totală în casă și facturi mici la energie." },
+              { Icon: Layers,     t: "Zidărie dublă, până la 60 cm", d: "Grosime până la 60 cm pe fațadele principale, rar întâlnită la construcții noi. Înseamnă liniște totală în casă și facturi mici la energie." },
               { Icon: ShieldCheck,t: "Tâmplărie de aluminiu premium",   d: "Aluminiu de cea mai înaltă calitate, nu PVC. Nu se deformează, izolează fonic superior și rezistă zeci de ani." },
               { Icon: Building2,  t: "Fațadă ventilată Porcelanosa",    d: "Plăci ceramice de la Porcelanosa: aspect impecabil și costuri minime de întreținere pe termen lung." },
               { Icon: Zap,        t: "Eficiență energetică ridicată",   d: "Vara păstrezi răcoarea, iarna căldura, cu un consum minim de energie pe tot parcursul anului." },
@@ -515,7 +554,7 @@ function Index() {
               { Icon: Sparkles,   t: "Branduri internaționale",         d: "Geberit, Rockwool, Knauf, Alumil, Legrand, Porcelanosa, Equitone, Ideal Standard și altele." },
             ].map((b) => (
               <div key={b.t} className="rounded-3xl border border-border bg-background p-7 text-center transition-shadow hover:shadow-md">
-                <b.Icon className="mx-auto h-9 w-9 text-primary" strokeWidth={1.5} />
+                <b.Icon className="mx-auto h-9 w-9 text-[oklch(0.6_0.045_72)]" strokeWidth={1.5} />
                 <h3 className="mt-4 text-lg font-semibold">{b.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.d}</p>
               </div>
@@ -601,7 +640,7 @@ function Index() {
           <SectionHead
             kicker="Apartamente"
             title={<>26 de unități. <Accent>O selecție atent gândită.</Accent></>}
-            sub="2 subsoluri, parter (6,02 m), mezanin, 5 etaje. Finisaje premium. Predare la cheie în 2027. Toate prețurile sunt fără TVA 19%."
+            sub="2 subsoluri, parter (6,02 m), mezanin, 5 etaje. Finisaje premium. Predare la cheie în 2027. Toate prețurile sunt fără TVA 21%."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             <ApartCard
@@ -612,7 +651,7 @@ function Index() {
               price="236.512 €"
               priceReduced="224.686 €"
               savings="11.826 €"
-              suffix="+ TVA 19%"
+              suffix="+ TVA 21%"
               extra="Unitatea A2 · ofertă perioadă limitată"
               tag={null}
               onDetails={() => setModal("2cam")}
@@ -625,7 +664,7 @@ function Index() {
               price="355.547 €"
               priceReduced="337.770 €"
               savings="17.777 €"
-              suffix="+ TVA 19%"
+              suffix="+ TVA 21%"
               extra="Unitatea A3 · ofertă perioadă limitată"
               tag="Cel mai solicitat"
               onDetails={() => setModal("3cam")}
@@ -636,8 +675,8 @@ function Index() {
               title="Etaj 5 · terase generoase"
               sub="Ultimul etaj, terasă de până la 71 mp"
               price="de la 262.413€"
-              suffix="+ TVA 19%"
-              extra="4 unități · până la 435.173€ + TVA 19%"
+              suffix="+ TVA 21%"
+              extra="4 unități · până la 435.173€ + TVA 21%"
               tag="Terase de până la 71 mp"
               onDetails={() => setModal("etaj5")}
             />
@@ -659,7 +698,7 @@ function Index() {
           <SectionHead
             kicker="Disponibilitate"
             title={<>Toate cele <Accent>26 de unități</Accent>.</>}
-            sub="Filtrează după număr de camere, etaj sau terasă. Prețuri fără TVA 19%."
+            sub="Filtrează după număr de camere, etaj sau terasă. Prețuri fără TVA 21%."
           />
           {/* Filtre */}
           <div className="mt-8 flex flex-wrap gap-3 justify-center">
@@ -693,12 +732,12 @@ function Index() {
                       <div>
                         <span className="text-xs text-muted-foreground line-through mr-2">{fmt(u.pret)} €</span>
                         <span className="text-lg font-bold text-primary">{fmt(u.discount)} €</span>
-                        <span className="text-xs text-muted-foreground ml-1">+ TVA 19%</span>
+                        <span className="text-xs text-muted-foreground ml-1">+ TVA 21%</span>
                       </div>
                     ) : (
                       <div>
                         <span className="text-lg font-bold text-primary">{fmt(u.pret)} €</span>
-                        <span className="text-xs text-muted-foreground ml-1">+ TVA 19%</span>
+                        <span className="text-xs text-muted-foreground ml-1">+ TVA 21%</span>
                       </div>
                     )}
                   </div>
@@ -707,9 +746,13 @@ function Index() {
                   Etaj {u.etaj} · {u.mp.toLocaleString("de-DE")} mp · {u.tip} {u.ext.toLocaleString("de-DE")} mp
                 </div>
                 <div className="mt-2 flex gap-4">
-                  <a href={PLAN_PDF(u.cod)} target="_blank" rel="noreferrer" className="text-sm text-muted-foreground hover:underline">
+                  <button
+                    type="button"
+                    onClick={() => setPdfModal({ url: PLAN_PDF(u.cod), cod: u.cod })}
+                    className="text-sm text-muted-foreground hover:underline"
+                  >
                     Plan PDF
-                  </a>
+                  </button>
                   <a href="#contact" className="text-sm font-semibold text-primary hover:underline">
                     Solicită →
                   </a>
@@ -830,7 +873,7 @@ function Index() {
               { Icon: Landmark,   t: "Activ real, nu cash",             d: "În perioade de incertitudine, capitalul mutat într-o proprietate centrală e mai sigur decât banii ținuți cash." },
             ].map((b) => (
               <div key={b.t} className="rounded-3xl border border-border bg-card p-7 text-center">
-                <b.Icon className="mx-auto h-9 w-9 text-primary" strokeWidth={1.5} />
+                <b.Icon className="mx-auto h-9 w-9 text-[oklch(0.6_0.045_72)]" strokeWidth={1.5} />
                 <h3 className="mt-4 text-lg font-semibold">{b.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.d}</p>
               </div>
@@ -856,7 +899,7 @@ function Index() {
               { Icon: KeyRound,  t: "Preț de pre-lansare", d: "Cumpărând acum, blochezi un preț sub valoarea estimată la finalizare. Câștigul vine din faza de execuție." },
             ].map((b) => (
               <div key={b.t} className="rounded-3xl border border-border bg-background p-7 text-center">
-                <b.Icon className="mx-auto h-9 w-9 text-primary" strokeWidth={1.5} />
+                <b.Icon className="mx-auto h-9 w-9 text-[oklch(0.6_0.045_72)]" strokeWidth={1.5} />
                 <h3 className="mt-4 text-lg font-semibold">{b.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.d}</p>
               </div>
@@ -885,7 +928,7 @@ function Index() {
               { Icon: Landmark,     t: "Documentație transparentă",        d: "Autorizația, antecontractul și planurile pot fi puse la dispoziție pentru verificare." },
             ].map((b) => (
               <div key={b.t} className="rounded-3xl border border-border bg-card p-7 text-center">
-                <b.Icon className="mx-auto h-9 w-9 text-primary" strokeWidth={1.5} />
+                <b.Icon className="mx-auto h-9 w-9 text-[oklch(0.6_0.045_72)]" strokeWidth={1.5} />
                 <h3 className="mt-4 text-lg font-semibold">{b.t}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.d}</p>
               </div>
@@ -1003,6 +1046,36 @@ function Index() {
         );
       })()}
 
+      {/* MODAL PLAN PDF */}
+      {pdfModal && (
+        <div
+          className="fixed inset-0 z-[80] flex items-center justify-center p-4"
+          onClick={() => setPdfModal(null)}
+        >
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+          <div
+            className="relative z-10 flex h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl bg-background shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between border-b border-border px-5 py-3">
+              <span className="text-sm font-semibold">Plan apartament {pdfModal.cod}</span>
+              <button
+                onClick={() => setPdfModal(null)}
+                aria-label="Închide"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <iframe
+              title={`Plan PDF ${pdfModal.cod}`}
+              src={pdfModal.url}
+              className="w-full flex-1 border-0 bg-white"
+            />
+          </div>
+        </div>
+      )}
+
       {/* FOOTER */}
       <footer className="bg-[oklch(0.18_0.01_60)] py-10 text-center text-sm text-[oklch(0.7_0.01_80)]">
         <div className="mx-auto max-w-6xl px-5">
@@ -1018,7 +1091,7 @@ function Index() {
             <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noreferrer" className="hover:text-white">SOL (ODR)</a>
           </div>
           <div className="mt-5 text-xs opacity-70">
-            Prețurile afișate sunt fără TVA 19%. Imaginile sunt randări cu titlu de prezentare.
+            Prețurile afișate sunt fără TVA 21%. Imaginile sunt randări cu titlu de prezentare.
           </div>
           <div className="mt-2 text-xs opacity-50">
             TIMEA TRADE INVESTMENT SRL
@@ -1109,12 +1182,6 @@ function LeadForm({ variant }: { variant: "hero" | "page" }) {
           type="tel"
           name="telefon"
           placeholder="Telefon"
-          className="w-full rounded-full border border-border bg-background px-5 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email (opțional)"
           className="w-full rounded-full border border-border bg-background px-5 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none"
         />
         <select
