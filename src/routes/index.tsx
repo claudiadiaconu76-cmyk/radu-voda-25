@@ -391,10 +391,7 @@ function Index() {
 
             {/* LEFT: mesaj */}
             <div className="text-center md:text-left">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white">
-                Imobil boutique · Sector 4 · 26 apartamente
-              </span>
-              <h1 className="mt-5 text-[2rem] font-semibold leading-[1.12] text-white md:text-5xl [text-shadow:_0_2px_18px_rgba(0,0,0,0.45)]">
+              <h1 className="text-[2rem] font-semibold leading-[1.12] text-white md:text-5xl [text-shadow:_0_2px_18px_rgba(0,0,0,0.45)]">
                 Locuiește în inima Bucureștiului, într-un imobil de doar{" "}
                 <span className="text-primary">26 de unități</span>.
               </h1>
