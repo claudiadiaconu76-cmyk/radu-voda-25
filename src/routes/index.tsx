@@ -56,6 +56,13 @@ const renderEmptyKitchenLight = { url: "/images/render-empty-kitchen-light.webp"
 const renderEmptyKitchenDark  = { url: "/images/render-empty-kitchen-dark.webp" };
 const renderEmptyBedroomDark  = { url: "/images/render-empty-bedroom-dark.webp" };
 
+const matZidarie    = "/images/material-zidarie.webp";
+const matTamplarie  = "/images/material-tamplarie.webp";
+const matFatada     = "/images/material-fatada.webp";
+const matEficienta  = "/images/material-eficienta.webp";
+const matParcare    = "/images/material-parcare.webp";
+const matBranduri   = "/images/material-branduri.webp";
+
 type Unit = {
   cod: string; etaj: number; cam: 2 | 3;
   mp: number; tip: "Balcon" | "Terasă"; ext: number;
@@ -546,17 +553,19 @@ function Index() {
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
-              { Icon: Layers,     t: "Zidărie dublă, până la 60 cm", d: "Grosime până la 60 cm pe fațadele principale, rar întâlnită la construcții noi. Înseamnă liniște totală în casă și facturi mici la energie." },
-              { Icon: ShieldCheck,t: "Tâmplărie de aluminiu premium",   d: "Aluminiu de cea mai înaltă calitate, nu PVC. Nu se deformează, izolează fonic superior și rezistă zeci de ani." },
-              { Icon: Building2,  t: "Fațadă ventilată Porcelanosa",    d: "Plăci ceramice de la Porcelanosa: aspect impecabil și costuri minime de întreținere pe termen lung." },
-              { Icon: Zap,        t: "Eficiență energetică ridicată",   d: "Vara păstrezi răcoarea, iarna căldura, cu un consum minim de energie pe tot parcursul anului." },
-              { Icon: Car,        t: "Parcare subterană",                d: "44 de locuri (40 subterane, 4 exterioare), cu stații de încărcare pentru mașini electrice." },
-              { Icon: Sparkles,   t: "Branduri internaționale",         d: "Geberit, Rockwool, Knauf, Alumil, Legrand, Porcelanosa, Equitone, Ideal Standard și altele." },
+              { im: matZidarie,   alt: "Zidărie de cărămidă",        t: "Zidărie dublă, până la 60 cm", d: "Grosime până la 60 cm pe fațadele principale, rar întâlnită la construcții noi. Înseamnă liniște totală în casă și facturi mici la energie." },
+              { im: matTamplarie, alt: "Profil tâmplărie aluminiu",  t: "Tâmplărie de aluminiu premium",   d: "Aluminiu de cea mai înaltă calitate, nu PVC. Nu se deformează, izolează fonic superior și rezistă zeci de ani." },
+              { im: matFatada,    alt: "Fațadă ventilată ceramică",  t: "Fațadă ventilată Porcelanosa",    d: "Plăci ceramice de la Porcelanosa: aspect impecabil și costuri minime de întreținere pe termen lung." },
+              { im: matEficienta, alt: "Izolație termică",           t: "Eficiență energetică ridicată",   d: "Vara păstrezi răcoarea, iarna căldura, cu un consum minim de energie pe tot parcursul anului." },
+              { im: matParcare,   alt: "Parcare subterană",          t: "Parcare subterană",                d: "44 de locuri (40 subterane, 4 exterioare), cu stații de încărcare pentru mașini electrice." },
+              { im: matBranduri,  alt: "Materiale premium fațadă",   t: "Branduri internaționale",         d: "Geberit, Rockwool, Knauf, Alumil, Legrand, Porcelanosa, Equitone, Ideal Standard și altele." },
             ].map((b) => (
-              <div key={b.t} className="rounded-3xl border border-border bg-background p-7 text-center transition-shadow hover:shadow-md">
-                <b.Icon className="mx-auto h-9 w-9 text-[oklch(0.6_0.045_72)]" strokeWidth={1.5} />
-                <h3 className="mt-4 text-lg font-semibold">{b.t}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.d}</p>
+              <div key={b.t} className="overflow-hidden rounded-3xl border border-border bg-background text-center transition-shadow hover:shadow-md">
+                <img src={b.im} alt={b.alt} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+                <div className="p-7 pt-6">
+                  <h3 className="text-lg font-semibold">{b.t}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.d}</p>
+                </div>
               </div>
             ))}
           </div>
