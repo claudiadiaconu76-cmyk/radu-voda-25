@@ -104,17 +104,17 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Radu Vodă 25 · Apartamente boutique lângă Piața Unirii" },
-      { name: "description", content: "26 de apartamente boutique în centrul Bucureștiului, la 650 m de Piața Unirii. Prețuri de la 236.513€ + TVA 21%. Finalizare 2027." },
+      { name: "description", content: "26 de apartamente boutique în centrul Bucureștiului, la 650 m de Piața Unirii. Prețuri de la 236.513€. Finalizare 2027." },
       { name: "author", content: "Radu Vodă 25" },
       { name: "robots", content: "index,follow" },
       { property: "og:title", content: "Radu Vodă 25 · Apartamente boutique lângă Piața Unirii" },
-      { property: "og:description", content: "26 de apartamente boutique la 650 m de Piața Unirii. De la 236.513€ + TVA 21%. Finalizare 2027." },
+      { property: "og:description", content: "26 de apartamente boutique la 650 m de Piața Unirii. De la 236.513€. Finalizare 2027." },
       { property: "og:image", content: `${SITE_URL}/images/IMG_3068.jpg` },
       { property: "og:type", content: "website" },
       { property: "og:url", content: SITE_URL },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Radu Vodă 25 · Apartamente boutique lângă Piața Unirii" },
-      { name: "twitter:description", content: "26 de apartamente boutique la 650 m de Piața Unirii. De la 236.513€ + TVA 21%. Finalizare 2027." },
+      { name: "twitter:description", content: "26 de apartamente boutique la 650 m de Piața Unirii. De la 236.513€. Finalizare 2027." },
       { name: "twitter:image", content: `${SITE_URL}/images/IMG_3068.jpg` },
     ],
     links: [
@@ -236,13 +236,13 @@ const apartmentDetails = {
     title: "Apartament 2 camere",
     subtitle: "63-75 mp utili, balcon până la 14,5 mp",
     price: "de la 236.513€",
-    suffix: "+ TVA 21%",
+    suffix: "",
     rows: [
       { l: "Suprafață utilă", v: "63-75 mp" },
       { l: "Balcon", v: "până la 14,57 mp" },
       { l: "Compartimentare", v: "Hol, living, bucătărie, dormitor, baie" },
       { l: "Etaje disponibile", v: "1-5" },
-      { l: "Preț", v: "de la 236.513€ + TVA 21%" },
+      { l: "Preț", v: "de la 236.513€" },
       { l: "Plan de plată", v: "5% rezervare + 25% în 30 zile, restul etapizat" },
     ],
     note: "Ideal pentru cupluri sau pentru o investiție cu randament în centrul Bucureștiului.",
@@ -251,13 +251,13 @@ const apartmentDetails = {
     title: "Apartament 3 camere",
     subtitle: "82-110 mp utili, balcon sau terasă până la 44 mp",
     price: "de la 291.760€",
-    suffix: "+ TVA 21%",
+    suffix: "",
     rows: [
       { l: "Suprafață utilă", v: "82-110 mp" },
       { l: "Balcon sau terasă", v: "până la 44,30 mp (etaj 3)" },
       { l: "Compartimentare", v: "Hol, living, bucătărie, 2 dormitoare, 2 băi" },
       { l: "Etaje disponibile", v: "1-5" },
-      { l: "Preț", v: "de la 291.760€ + TVA 21%" },
+      { l: "Preț", v: "de la 291.760€" },
       { l: "Plan de plată", v: "5% rezervare + 25% în 30 zile, restul etapizat" },
     ],
     note: "Cel mai solicitat tip de unitate. Potrivit pentru familii care vor centrul fără compromisuri.",
@@ -266,12 +266,12 @@ const apartmentDetails = {
     title: "Apartamente etaj 5 · terase generoase",
     subtitle: "Ultimul etaj, terasă de până la 71 mp, vedere panoramică",
     price: "de la 262.413€",
-    suffix: "+ TVA 21%",
+    suffix: "",
     rows: [
       { l: "Unități la etaj 5", v: "4 apartamente" },
       { l: "Terasă maximă", v: "71,27 mp (unitatea A23)" },
       { l: "Suprafață utilă", v: "67-89 mp" },
-      { l: "Interval de preț", v: "262.413€ - 435.173€ + TVA 21%" },
+      { l: "Interval de preț", v: "262.413€ - 435.173€" },
       { l: "Vedere", v: "Panoramică, spații exterioare private" },
     ],
     note: "Unitatea A23 are cea mai mare terasă din proiect: 71 mp de spațiu exterior privat.",
@@ -401,7 +401,7 @@ function Index() {
           {/* Stats */}
           <div className="mx-auto mt-7 grid max-w-xl grid-cols-2 gap-3 md:grid-cols-4">
             {[
-              { n: "236.513€", l: "preț de la (+ TVA 21%)" },
+              { n: "236.513€", l: "preț de la" },
               { n: "650 m",    l: "până la Piața Unirii" },
               { n: "26",       l: "apartamente" },
               { n: "2027",     l: "finalizare" },
@@ -415,7 +415,7 @@ function Index() {
 
           {/* Reducere badge */}
           <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-bold text-primary-foreground shadow-lg">
-            <Sparkles className="h-4 w-4" /> Disponibilități limitate · doar câteva unități la prețul de pre-lansare
+            <Sparkles className="h-4 w-4" /> Disponibilități limitate
           </div>
 
           {/* Formular hero */}
@@ -638,7 +638,7 @@ function Index() {
             </div>
           </div>
           <p className="mt-5 text-center text-xs text-muted-foreground">
-            Estimări pentru apartamente complet mobilate și utilate, fără TVA. Randamentul în regim Airbnb presupune o rată de ocupare de 65% pe an. Cifrele variază în funcție de unitate, mobilare, ocupare reală și costuri operaționale.
+            Estimări pentru apartamente complet mobilate și utilate. Randamentul în regim Airbnb presupune o rată de ocupare de 65% pe an. Cifrele variază în funcție de unitate, mobilare, ocupare reală și costuri operaționale.
           </p>
         </div>
       </section>
@@ -649,7 +649,7 @@ function Index() {
           <SectionHead
             kicker="Apartamente"
             title={<>26 de unități. <Accent>O selecție atent gândită.</Accent></>}
-            sub="2 subsoluri, parter (6,02 m), mezanin, 5 etaje. Finisaje premium. Predare la cheie în 2027. Toate prețurile sunt fără TVA 21%."
+            sub="2 subsoluri, parter (6,02 m), mezanin, 5 etaje. Finisaje premium. Predare la cheie în 2027."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             <ApartCard
@@ -660,7 +660,7 @@ function Index() {
               price="236.512 €"
               priceReduced="224.686 €"
               savings="11.826 €"
-              suffix="+ TVA 21%"
+              suffix=""
               extra="Unitatea A2 · ofertă perioadă limitată"
               tag={null}
               onDetails={() => setModal("2cam")}
@@ -673,7 +673,7 @@ function Index() {
               price="355.547 €"
               priceReduced="337.770 €"
               savings="17.777 €"
-              suffix="+ TVA 21%"
+              suffix=""
               extra="Unitatea A3 · ofertă perioadă limitată"
               tag="Cel mai solicitat"
               onDetails={() => setModal("3cam")}
@@ -684,8 +684,8 @@ function Index() {
               title="Etaj 5 · terase generoase"
               sub="Ultimul etaj, terasă de până la 71 mp"
               price="de la 262.413€"
-              suffix="+ TVA 21%"
-              extra="4 unități · până la 435.173€ + TVA 21%"
+              suffix=""
+              extra="4 unități · până la 435.173€"
               tag="Terase de până la 71 mp"
               onDetails={() => setModal("etaj5")}
             />
@@ -707,7 +707,7 @@ function Index() {
           <SectionHead
             kicker="Disponibilitate"
             title={<>Toate cele <Accent>26 de unități</Accent>.</>}
-            sub="Filtrează după număr de camere, etaj sau terasă. Prețuri fără TVA 21%."
+            sub="Filtrează după număr de camere, etaj sau terasă."
           />
           {/* Filtre */}
           <div className="mt-8 flex flex-wrap gap-3 justify-center">
@@ -741,12 +741,10 @@ function Index() {
                       <div>
                         <span className="text-xs text-muted-foreground line-through mr-2">{fmt(u.pret)} €</span>
                         <span className="text-lg font-bold text-primary">{fmt(u.discount)} €</span>
-                        <span className="text-xs text-muted-foreground ml-1">+ TVA 21%</span>
                       </div>
                     ) : (
                       <div>
                         <span className="text-lg font-bold text-primary">{fmt(u.pret)} €</span>
-                        <span className="text-xs text-muted-foreground ml-1">+ TVA 21%</span>
                       </div>
                     )}
                   </div>
@@ -1100,7 +1098,7 @@ function Index() {
             <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noreferrer" className="hover:text-white">SOL (ODR)</a>
           </div>
           <div className="mt-5 text-xs opacity-70">
-            Prețurile afișate sunt fără TVA 21%. Imaginile sunt randări cu titlu de prezentare.
+            Imaginile sunt randări cu titlu de prezentare.
           </div>
           <div className="mt-2 text-xs opacity-50">
             TIMEA TRADE INVESTMENT SRL

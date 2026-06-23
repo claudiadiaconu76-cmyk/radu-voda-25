@@ -79,7 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Radu Vodă 25 · Apartamente boutique lângă Piața Unirii" },
-      { name: "description", content: "26 de apartamente boutique în centrul Bucureștiului, la 650 m de Piața Unirii. Prețuri de la 236.513€ + TVA 21%. Finalizare 2027." },
+      { name: "description", content: "26 de apartamente boutique în centrul Bucureștiului, la 650 m de Piața Unirii. Prețuri de la 236.513€. Finalizare 2027." },
       { name: "author", content: "Radu Vodă 25" },
     ],
     links: [
