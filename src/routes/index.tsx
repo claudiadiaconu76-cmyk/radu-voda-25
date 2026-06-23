@@ -373,7 +373,7 @@ function Index() {
     <div className="min-h-screen bg-background text-foreground antialiased pb-16 md:pb-0">
 
       {/* HERO */}
-      <section id="top" className="relative overflow-hidden">
+      <section id="top" className="relative overflow-hidden md:flex md:min-h-[88vh] md:items-center">
         <img
           src="/images/hero-1920.webp"
           srcSet="/images/hero-960.webp 960w, /images/hero-1920.webp 1920w"
@@ -385,53 +385,60 @@ function Index() {
           className="absolute inset-0 h-full w-full object-cover"
           style={{ objectPosition: "center 40%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/85" />
-        <div className="relative mx-auto max-w-3xl px-5 py-14 text-center md:py-20">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white">
-            Imobil boutique · Sector 4 · 26 apartamente
-          </span>
-          <h1 className="mx-auto mt-5 max-w-2xl text-[2rem] font-semibold leading-[1.12] text-white md:text-5xl">
-            Locuiește în inima Bucureștiului, într-un imobil de doar{" "}
-            <span className="text-primary">26 de unități</span>.
-          </h1>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/85 md:text-lg">
-            La Piața Unirii nu cumperi doar un apartament. Cumperi o locație care își păstrează valoarea în timp.
-          </p>
+        <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/55 to-black/30" />
+        <div className="relative mx-auto w-full max-w-6xl px-5 py-10 md:py-14">
+          <div className="md:grid md:grid-cols-2 md:gap-12 md:items-center">
 
-          {/* Stats */}
-          <div className="mx-auto mt-7 grid max-w-xl grid-cols-2 gap-3 md:grid-cols-4">
-            {[
-              { n: "236.513€", l: "preț de la" },
-              { n: "650 m",    l: "până la Piața Unirii" },
-              { n: "26",       l: "apartamente" },
-              { n: "2027",     l: "finalizare" },
-            ].map((s) => (
-              <div key={s.l} className="rounded-xl bg-white/10 px-3 py-2 backdrop-blur-sm">
-                <div className="text-base font-bold text-primary">{s.n}</div>
-                <div className="text-xs text-white/70">{s.l}</div>
+            {/* LEFT: mesaj */}
+            <div className="text-center md:text-left">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-white">
+                Imobil boutique · Sector 4 · 26 apartamente
+              </span>
+              <h1 className="mt-5 text-[2rem] font-semibold leading-[1.12] text-white md:text-5xl [text-shadow:_0_2px_18px_rgba(0,0,0,0.45)]">
+                Locuiește în inima Bucureștiului, într-un imobil de doar{" "}
+                <span className="text-primary">26 de unități</span>.
+              </h1>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/90 md:text-base mx-auto md:mx-0 [text-shadow:_0_1px_10px_rgba(0,0,0,0.5)]">
+                La Piața Unirii nu cumperi doar un apartament. Cumperi o locație care își păstrează valoarea în timp.
+              </p>
+
+              {/* Stats */}
+              <div className="mt-6 grid grid-cols-2 gap-3 max-w-md mx-auto md:mx-0 sm:grid-cols-4 md:grid-cols-2 lg:grid-cols-4">
+                {[
+                  { n: "236.513€", l: "preț de la" },
+                  { n: "650 m",    l: "până la Piața Unirii" },
+                  { n: "26",       l: "apartamente" },
+                  { n: "2027",     l: "finalizare" },
+                ].map((s) => (
+                  <div key={s.l} className="rounded-xl bg-white/10 px-3 py-2 backdrop-blur-sm">
+                    <div className="text-base font-bold text-primary">{s.n}</div>
+                    <div className="text-xs text-white/70">{s.l}</div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
 
-          {/* Reducere badge */}
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-bold text-primary-foreground shadow-lg">
-            <Sparkles className="h-4 w-4" /> Disponibilități limitate
-          </div>
+              {/* Reducere badge */}
+              <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-bold text-primary-foreground shadow-lg">
+                <Sparkles className="h-4 w-4" /> Disponibilități limitate
+              </div>
 
-          {/* Formular hero */}
-          <div className="cta-anchor mx-auto mt-7 max-w-md">
-            <LeadForm variant="hero" />
-          </div>
+              <div className="mt-5 flex flex-col items-center gap-3 md:flex-row md:items-center">
+                <a
+                  href={`tel:${PHONE_TEL}`}
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-bold text-neutral-900 shadow-lg hover:bg-white/90 transition-colors"
+                >
+                  <Phone className="h-4 w-4 text-primary" /> Sună acum: {PHONE_DISPLAY}
+                </a>
+                <p className="text-[12px] text-white/70">Răspuns în maxim 24h</p>
+              </div>
+            </div>
 
-          <a
-            href={`tel:${PHONE_TEL}`}
-            className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-bold text-neutral-900 shadow-lg hover:bg-white/90 transition-colors"
-          >
-            <Phone className="h-4 w-4 text-primary" /> Sună acum: {PHONE_DISPLAY}
-          </a>
-          <p className="mt-4 text-[12px] text-white/65">
-            Răspuns în maxim 24h
-          </p>
+            {/* RIGHT: formular */}
+            <div className="cta-anchor mx-auto mt-8 w-full max-w-md md:mt-0">
+              <LeadForm variant="hero" />
+            </div>
+
+          </div>
         </div>
       </section>
 
