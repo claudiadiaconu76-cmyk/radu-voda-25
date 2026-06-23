@@ -415,7 +415,7 @@ function Index() {
 
           {/* Reducere badge */}
           <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-bold text-primary-foreground shadow-lg">
-            <Sparkles className="h-4 w-4" /> Disponibilități limitate într-un proiect boutique cu 26 de apartamente
+            <Sparkles className="h-4 w-4" /> Disponibilități limitate · doar câteva unități la prețul de pre-lansare
           </div>
 
           {/* Formular hero */}
