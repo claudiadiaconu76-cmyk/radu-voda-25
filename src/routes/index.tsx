@@ -25,8 +25,8 @@ const OFFER_DEADLINE = new Date("2026-07-15T23:59:59");
 
 // Livrare lead-uri prin Web3Forms (merge imediat). TODO: mutat pe Resend → RaduVodă (bogdan@atmyhome.ro) + gmail copie.
 const WEB3FORMS_KEY = "817563ca-51e0-45de-a953-ed6b83a52c2e";
-// Apps Script web app care scrie fiecare lead într-un Google Sheet (evidență Excel). Pune URL-ul după deploy.
-const SHEET_WEBHOOK = "";
+// Apps Script web app care scrie fiecare lead într-un Google Sheet (evidență Excel).
+const SHEET_WEBHOOK = "https://script.google.com/macros/s/AKfycbxROX9iECetr2fGFQ1JEFX4u9xCRTuDkrPQtScmHrdGxIIcNY321uyuC-lvA1D9RoFlrQ/exec";
 // Pagina de mulțumire — redirect real (page load) pentru tracking conversii.
 const THANK_YOU_URL = "/multumim";
 
