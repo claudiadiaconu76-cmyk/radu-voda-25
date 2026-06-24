@@ -23,8 +23,10 @@ const PLAN_PDF = (cod: string) =>
 // ── Ofertă promoțională ─────────────────────────────────────────
 const OFFER_DEADLINE = new Date("2026-07-15T23:59:59");
 
-// Endpoint formular — lasă gol pentru demo, pune URL Formspree pentru producție
-const LEAD_ENDPOINT = "";
+// Livrare lead-uri prin Web3Forms (merge imediat). TODO: mutat pe Resend → RaduVodă (bogdan@atmyhome.ro) + gmail copie.
+const WEB3FORMS_KEY = "817563ca-51e0-45de-a953-ed6b83a52c2e";
+// Pagina de mulțumire — redirect real (page load) pentru tracking conversii.
+const THANK_YOU_URL = "/multumim";
 
 const brandLogos = [
   { name: "Geberit",        src: "/images/brands/geberit.png",        w: "max-w-[140px]" },
@@ -1129,7 +1131,6 @@ function Index() {
 }
 
 function LeadForm({ variant }: { variant: "hero" | "page" }) {
-  const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [err, setErr] = useState(false);
 
@@ -1139,37 +1140,26 @@ function LeadForm({ variant }: { variant: "hero" | "page" }) {
     setSending(true);
     try {
       const data = Object.fromEntries(new FormData(e.currentTarget).entries());
-      if (LEAD_ENDPOINT) {
-        const res = await fetch(LEAD_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(data),
-        });
-        if (!res.ok) throw new Error("fail");
-      } else {
-        await new Promise((r) => setTimeout(r, 700));
-      }
-      setSent(true);
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: "Lead nou — RaduVodă25",
+          ...data,
+        }),
+      });
+      if (!res.ok) throw new Error("fail");
+      // Redirect real (page load) la pagina de mulțumire — pentru tracking conversii.
+      window.location.href = THANK_YOU_URL;
+      return;
     } catch {
       setErr(true);
-    } finally {
       setSending(false);
     }
   }
 
   const card = variant === "hero" ? "bg-background/95 backdrop-blur shadow-2xl" : "bg-card shadow-sm";
-
-  if (sent) {
-    return (
-      <div className={`rounded-3xl border border-border ${card} p-7 text-center`}>
-        <BadgeCheck className="mx-auto h-10 w-10 text-primary" />
-        <div className="mt-2 text-2xl font-semibold text-primary">Mulțumim!</div>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Un consultant te contactează în cel mai scurt timp. Pentru ceva urgent, sună la {PHONE_DISPLAY}.
-        </p>
-      </div>
-    );
-  }
 
   return (
     <form onSubmit={handleSubmit} className={`rounded-3xl border border-border ${card} p-5 md:p-6`}>
