@@ -9,7 +9,7 @@ const REDIRECT_URL = "https://REPLACE_ME";
 const REDIRECT_DELAY = 4;
 // ─────────────────────────────────────────────────────────────
 
-export const Route = createFileRoute("/multumesc")({
+export const Route = createFileRoute("/multumim")({
   component: ThankYou,
 });
 
