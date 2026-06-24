@@ -5,11 +5,10 @@ import { z } from "zod";
 const SHEET_WEBHOOK =
   "https://script.google.com/macros/s/AKfycbxROX9iECetr2fGFQ1JEFX4u9xCRTuDkrPQtScmHrdGxIIcNY321uyuC-lvA1D9RoFlrQ/exec";
 
-// Adresele unde merg lead-urile. [DE COMPLETAT] adaugă bogdan@atmyhome.ro etc DUPĂ ce verifici domeniul în Resend.
-const LEAD_TO = ["claudiadiaconu76@gmail.com"];
-// "from": cât timp domeniul nu e verificat în Resend, folosim adresa de test (merge doar către emailul contului).
-// [DE COMPLETAT] după verificarea domeniului: "Radu Vodă 25 <noreply@raduvoda25.ro>".
-const LEAD_FROM = "Radu Vodă 25 <onboarding@resend.dev>";
+// Adresele unde merg lead-urile. Adaugă aici și bogdan@atmyhome.ro dacă vrei (după verificare domeniu).
+const LEAD_TO = ["raduvoda25@gmail.com"];
+// "from" pe domeniul verificat în Resend.
+const LEAD_FROM = "Radu Vodă 25 <noreply@raduvoda25.ro>";
 
 // Funcție server (rulează DOAR server-side pe Vercel). Secretele din process.env.
 // Face: 1) evidență în Sheet, 2) email prin Resend, 3) întoarce eventId (pt deduplicare CAPI).
