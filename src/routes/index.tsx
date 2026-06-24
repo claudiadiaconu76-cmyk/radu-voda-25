@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
+import { submitLead } from "../lib/api/lead.functions";
 import {
   ShieldCheck, Car, Building2, Sparkles,
   Phone, Mail, FileText, Check, X, ChevronDown,
@@ -23,12 +24,6 @@ const PLAN_PDF = (cod: string) =>
 // ── Ofertă promoțională ─────────────────────────────────────────
 const OFFER_DEADLINE = new Date("2026-07-15T23:59:59");
 
-// Livrare lead-uri prin Web3Forms (merge imediat). TODO: mutat pe Resend → RaduVodă (bogdan@atmyhome.ro) + gmail copie.
-const WEB3FORMS_KEY = "817563ca-51e0-45de-a953-ed6b83a52c2e";
-// Apps Script web app care scrie fiecare lead într-un Google Sheet (evidență Excel).
-const SHEET_WEBHOOK = "https://script.google.com/macros/s/AKfycbxROX9iECetr2fGFQ1JEFX4u9xCRTuDkrPQtScmHrdGxIIcNY321uyuC-lvA1D9RoFlrQ/exec";
-// Pagina de mulțumire — redirect real (page load) pentru tracking conversii.
-const THANK_YOU_URL = "/multumim";
 
 const brandLogos = [
   { name: "Geberit",        src: "/images/brands/geberit.png",        w: "max-w-[140px]" },
@@ -1142,26 +1137,12 @@ function LeadForm({ variant }: { variant: "hero" | "page" }) {
     setSending(true);
     try {
       const data = Object.fromEntries(new FormData(e.currentTarget).entries());
-      // Scrie lead-ul în Google Sheet (evidență) — fire-and-forget, nu blocheză redirectul.
-      if (SHEET_WEBHOOK) {
-        fetch(SHEET_WEBHOOK, {
-          method: "POST",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify({ ...data, sursa: "RaduVodă25" }),
-        }).catch(() => {});
-      }
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: "Lead nou — RaduVodă25",
-          ...data,
-        }),
-      });
-      if (!res.ok) throw new Error("fail");
-      // Redirect real (page load) la pagina de mulțumire — pentru tracking conversii.
-      window.location.href = THANK_YOU_URL;
+      // Funcția server: evidență Sheet + email Resend (+ CAPI), întoarce eventId.
+      const out = await submitLead({ data: data as { nume: string; telefon: string; tip?: string } });
+      // Redirect REAL (page load, NU navigare SPA) la /multumim — ca să se înregistreze conversia.
+      window.location.href =
+        "/multumim?eid=" + encodeURIComponent(out.eventId) +
+        "&tip=" + encodeURIComponent(String(data.tip || ""));
       return;
     } catch {
       setErr(true);
