@@ -1,33 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-
-// ─────────────────────────────────────────────────────────────
-// Link-ul către care redirecționăm după pagina de mulțumire.
-// Înlocuiește cu link-ul tău.
-const REDIRECT_URL = "https://REPLACE_ME";
-// Secunde până la redirect automat.
-const REDIRECT_DELAY = 4;
-// ─────────────────────────────────────────────────────────────
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/multumim")({
   component: ThankYou,
 });
 
 function ThankYou() {
-  const [count, setCount] = useState(REDIRECT_DELAY);
-
-  useEffect(() => {
-    if (!REDIRECT_URL || REDIRECT_URL.includes("REPLACE_ME")) return;
-    const tick = setInterval(() => setCount((c) => (c > 0 ? c - 1 : 0)), 1000);
-    const go = setTimeout(() => {
-      window.location.href = REDIRECT_URL;
-    }, REDIRECT_DELAY * 1000);
-    return () => {
-      clearInterval(tick);
-      clearTimeout(go);
-    };
-  }, []);
-
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-5">
       <div className="w-full max-w-md text-center">
@@ -53,18 +30,12 @@ function ThankYou() {
           Am primit datele tale. Te contactăm în cel mai scurt timp.
         </p>
 
-        <a
-          href={REDIRECT_URL}
+        <Link
+          to="/"
           className="mt-8 inline-flex items-center justify-center rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
         >
-          Continuă →
-        </a>
-
-        {!REDIRECT_URL.includes("REPLACE_ME") && (
-          <p className="mt-4 text-xs text-muted-foreground">
-            Redirecționare automată în {count}s…
-          </p>
-        )}
+          Înapoi acasă
+        </Link>
       </div>
     </div>
   );
