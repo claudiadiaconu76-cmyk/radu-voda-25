@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
 const PHONE_DISPLAY = "+40 751 116 116";
 const PHONE_TEL = "+40751116116";
@@ -66,6 +66,15 @@ function ThankYou() {
           </svg>
           {PHONE_DISPLAY}
         </a>
+
+        <div className="mt-5">
+          <Link
+            to="/"
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            ← Înapoi acasă
+          </Link>
+        </div>
       </div>
     </div>
   );
