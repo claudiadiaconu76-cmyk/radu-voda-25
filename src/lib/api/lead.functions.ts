@@ -6,7 +6,7 @@ const SHEET_WEBHOOK =
   "https://script.google.com/macros/s/AKfycbxROX9iECetr2fGFQ1JEFX4u9xCRTuDkrPQtScmHrdGxIIcNY321uyuC-lvA1D9RoFlrQ/exec";
 
 // Adresele unde merg lead-urile. Adaugă aici și bogdan@atmyhome.ro dacă vrei (după verificare domeniu).
-const LEAD_TO = ["raduvoda25@gmail.com"];
+const LEAD_TO = ["raduvoda25@gmail.com", "bogdan@atmyhome.ro"];
 // "from" pe domeniul verificat în Resend.
 const LEAD_FROM = "Radu Vodă 25 <noreply@raduvoda25.ro>";
 
