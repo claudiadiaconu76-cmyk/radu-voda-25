@@ -6,9 +6,11 @@ import { z } from "zod";
 const SHEET_WEBHOOK =
   "https://script.google.com/macros/s/AKfycbxROX9iECetr2fGFQ1JEFX4u9xCRTuDkrPQtScmHrdGxIIcNY321uyuC-lvA1D9RoFlrQ/exec";
 
-// Apps Script pentru Sheet-ul INTERN separat (sursă lead, doar proprietar/marketing — NU vânzări).
-// Setează INTERNAL_SHEET_WEBHOOK în Vercel env după ce creezi sheet-ul + scriptul.
+// Opțional: Sheet INTERN separat prin Apps Script. Dacă nu e setat, sursa merge pe email intern (mai jos).
 const INTERNAL_SHEET_WEBHOOK = process.env.INTERNAL_SHEET_WEBHOOK;
+
+// Email INTERN cu sursa lead-ului — DOAR proprietarul. NU vânzările (ca să nu vadă sursa).
+const INTERNAL_TO = ["raduvoda25@gmail.com"];
 
 // Adresele unde merg lead-urile. Adaugă aici și bogdan@atmyhome.ro dacă vrei (după verificare domeniu).
 const LEAD_TO = ["raduvoda25@gmail.com", "bogdan@atmyhome.ro", "octavian@atmyhome.ro"];
@@ -135,6 +137,40 @@ export const submitLead = createServerFn({ method: "POST" })
         });
       } catch {
         /* emailul nu trebuie să blocheze lead-ul */
+      }
+
+      // 3b) Email INTERN cu SURSA — doar proprietarul (separat de vânzări).
+      try {
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: LEAD_FROM,
+            to: INTERNAL_TO,
+            subject: `[INTERN · Sursă] Lead nou — ${sursa}`,
+            text:
+              `SURSĂ: ${sursa}\n` +
+              `(intern — nu se trimite la vânzări)\n\n` +
+              `Nume: ${data.nume}\n` +
+              `Telefon: ${data.telefon}\n` +
+              `Interes: ${data.tip || "-"}\n` +
+              `event_id: ${eventId}\n\n` +
+              `── Detalii atribuire ──\n` +
+              `utm_source: ${data.utm_source || "-"}\n` +
+              `utm_medium: ${data.utm_medium || "-"}\n` +
+              `utm_campaign: ${data.utm_campaign || "-"}\n` +
+              `utm_content (reclamă): ${data.utm_content || "-"}\n` +
+              `utm_term (adset): ${data.utm_term || "-"}\n` +
+              `fbclid: ${data.fbclid || "-"}\n` +
+              `gclid: ${data.gclid || "-"}\n` +
+              `referrer: ${data.referrer || "-"}`,
+          }),
+        });
+      } catch {
+        /* emailul intern nu trebuie să blocheze lead-ul */
       }
     }
 
