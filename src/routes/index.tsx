@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import { submitLead } from "../lib/api/lead.functions";
+import { captureAttribution, getLeadMeta } from "../lib/attrib";
 import {
   ShieldCheck, Car, Building2, Sparkles,
   Phone, Mail, FileText, Check, X, ChevronDown,
@@ -350,6 +351,11 @@ function Index() {
     list = [...list].sort((a, b) => (sortAsc ? a.pret - b.pret : b.pret - a.pret));
     return list;
   }, [fCam, fEtaj, fTerasa, sortAsc]);
+
+  // Captură atribuire sursă (UTM/fbclid/gclid/referrer) la prima încărcare. Aditiv, nu atinge vânzările.
+  useEffect(() => {
+    captureAttribution();
+  }, []);
 
   useEffect(() => {
     const anchors = Array.from(document.querySelectorAll<HTMLElement>(".cta-anchor"));
@@ -1137,8 +1143,10 @@ function LeadForm({ variant }: { variant: "hero" | "page" }) {
     setSending(true);
     try {
       const data = Object.fromEntries(new FormData(e.currentTarget).entries());
-      // Funcția server: evidență Sheet + email Resend (+ CAPI), întoarce eventId.
-      const out = await submitLead({ data: data as { nume: string; telefon: string; tip?: string } });
+      // Atașăm atribuirea sursei + cookie-urile Pixel (_fbp/_fbc) — aditiv, fără câmpuri noi în formular.
+      const meta = getLeadMeta();
+      // Funcția server: evidență Sheet (vânzări) + Sheet intern (sursă) + email Resend + CAPI, întoarce eventId.
+      const out = await submitLead({ data: { ...data, ...meta } as Parameters<typeof submitLead>[0]["data"] });
       // Redirect REAL (page load, NU navigare SPA) la /multumim — ca să se înregistreze conversia.
       window.location.href =
         "/multumim?eid=" + encodeURIComponent(out.eventId) +
